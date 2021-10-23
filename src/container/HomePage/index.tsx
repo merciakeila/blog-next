@@ -1,7 +1,8 @@
 import React from 'react';
 import Header from '../../components/Header';
+import MainContainer from '../../components/MainContainer';
 import { PostData } from '../../domain/posts/post';
-import { Container } from './style';
+import { Container, Grid } from './style';
 
 export type HomePageProps = {
   posts: PostData[];
@@ -11,11 +12,15 @@ export default function HomePage({ posts }: HomePageProps) {
   return (
     <>
       <Header />
-      <Container>
-        {posts.map((post) => (
-          <h2 key={post.id}>{post.title}</h2>
-        ))}
-      </Container>
+      <MainContainer>
+        <Container>
+          <Grid>
+            {posts.map((post) => (
+              <h2 key={post.slug}>{post.title}</h2>
+            ))}
+          </Grid>
+        </Container>
+      </MainContainer>
     </>
   );
 }
