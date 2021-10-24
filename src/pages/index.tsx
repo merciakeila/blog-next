@@ -12,19 +12,20 @@ export default function Home({ posts }: HomeProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getAllPosts();
+
+   const posts = await getAllPosts('_sort=id:desc&_start=0&_limit=30');
 
   return {
     props: { posts },
-    revalidate: 60,
+    //revalidate: 60,
   };
 };
 
 //GET
 
-/* GET STATIC GENERATION: Integração para renderizar conteúdos estáticos e tem um tempo para revalidar e gerar uma nova build.
+/* GET STATIC GENERATION PROPS: Integração para renderizar conteúdos estáticos e tem um tempo para revalidar e gerar uma nova build.
 
-no caso de GET STATIC GENARATION por ser página estática, para funcionar em páginas dinâmicas
+no caso de GET STATIC GENARATION PROPS por ser página estática, para funcionar em páginas dinâmicas
 
 import { GetStaticProps } from 'next';
 import { PostData } from '../domain/posts/post';
@@ -59,6 +60,8 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 O revalidate é o tempo que vai revalidade/gerar nova build.
+
+Para trabalhar com rotas dinâmicas, precisa utilizar o GET STATIC PATHS.
 */
 
 /* GET SERVER SIDE: Integração da forma "tradicional" com react, página ou conteúdo que não precisa ser renderizado nos mecanimos de busca;

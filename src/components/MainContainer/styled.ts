@@ -1,10 +1,12 @@
-import styled, {css} from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Container = styled.div`
  ${({ theme }) => css`
-    max-width: 96rem;
     font-size: ${theme.font.sizes.medium}
-    margin: 0 auto;
     padding: ${theme.spacings.medium}
+    max-width: 96rem;
+    margin: 0 auto;
   `}
+  max-width: 96rem;
+   margin: 0 auto;
 `
