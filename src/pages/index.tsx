@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next';
-import HomePage from '../container/HomePage';
-import { getAllPosts } from '../data/get-all-posts';
+import HomePage from '../containers/HomePage';
+import { getAllPosts } from '../data/posts/get-all-posts';
 import { PostData } from '../domain/posts/post';
 
 export type HomeProps = {
@@ -12,16 +12,12 @@ export default function Home({ posts }: HomeProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-
-   const posts = await getAllPosts('_sort=id:desc&_start=0&_limit=30');
-
+ const posts = await getAllPosts('_sort=id:desc&_start=0&_limit=6');
   return {
     props: { posts },
     //revalidate: 60,
   };
 };
-
-//GET
 
 /* GET STATIC GENERATION PROPS: Integração para renderizar conteúdos estáticos e tem um tempo para revalidar e gerar uma nova build.
 
